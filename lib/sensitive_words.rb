@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 
 class SensitiveWords
 
@@ -7,8 +7,11 @@ class SensitiveWords
   class << self
 
     def load_dict(dict_path)
-      dict = @@dict.merge get_dict_file_hash(dict_path)
+      new_dict = get_dict_file_hash(dict_path)
+      dict = @@dict.merge new_dict
       @@dict = dict
+    rescue Errno::ENOENT => boom
+      puts "#{boom.class} - #{boom.message}"
     end
     
     def get_dict_file_hash(path)
