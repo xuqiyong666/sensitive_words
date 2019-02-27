@@ -21,15 +21,15 @@ require 'sensitive_words'
 SensitiveWords.load_dict("#{__dir__}/dictionary/dict1.txt")
 SensitiveWords.load_dict("#{__dir__}/dictionary/dict2.txt") #可以载入多次
 
-article = "习近平周永暴干康BLOWJOBjeffrey哈哈哈流氓政府"
+article = "暴干jeffrey周永康BLOWJOB哈哈哈"
 
 #找出文章中的所有敏感词
 words = SensitiveWords.sensitive_words(article)
-puts words.inspect   # => ["习近平", "暴干", "BLOWJOB", "流氓政府"]
+puts words.inspect   # => ["暴干", "周永康"，"BLOWJOB"]
 
 #或者只需要指定数量上限的敏感词
 words = SensitiveWords.sensitive_words(article,2)
-puts words.inspect   # => ["习近平", "暴干"]
+puts words.inspect   # => ["暴干", "周永康"]
 ```
 
 ### 敏感词文件示例
@@ -37,7 +37,6 @@ puts words.inspect   # => ["习近平", "暴干"]
 说明： 纯文本，一行一个
 
 ``` plain
-习近平
 周永康
 暴干
 BLOWJOB
